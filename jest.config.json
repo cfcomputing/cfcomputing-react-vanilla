@@ -1,0 +1,14 @@
+{
+	"testMatch": ["**/__tests__/**/*.?(m)js?(x)", "**/?(*.)(spec|test).?(m)js?(x)"],
+	"moduleFileExtensions": ["js", "mjs"],
+	"transform": {
+		"^.+.m?js$": "babel-jest"
+	},
+	"testEnvironment": "node",
+	"compilerOptions": {
+		"baseUrl": "./src",
+		"paths": {
+			"app": ["app/*"]
+		}
+	}
+}

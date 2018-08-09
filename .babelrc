@@ -1,0 +1,28 @@
+{
+	"presets": [
+		"stage-1",
+		[
+			"env",
+			{
+				"targets": {
+					"browsers": [
+						"last 1 version",
+						"> 5%",
+						"not dead"
+					]
+				}
+			}
+		],
+		"react"
+	],
+	"plugins": [
+		"syntax-dynamic-import",
+		"transform-class-properties"
+	],
+	"env": {
+		"test": {
+			"presets": [["es2015",{"modules": false}]],
+			"plugins": [["transform-es2015-modules-commonjs", {"spec": true}]]
+		}
+	}
+}
