@@ -1,6 +1,7 @@
 import React from "react";
 
 import { ThemeContext } from "app/theme/theme.context";
+import { LoginComponent } from "app/login/login.component";
 
 export class AppComponent extends React.Component {
 	constructor(props) {
@@ -13,18 +14,6 @@ export class AppComponent extends React.Component {
 		};
 	}
 
-	increment = () => {
-		this.setState(prevState => ({
-			cntr: prevState.cntr + 1
-		}));
-	};
-
-	decrement = () => {
-		this.setState(prevState => ({
-			cntr: prevState.cntr - 1
-		}));
-	};
-
 	changeTheme = () => {
 		this.setState(prevState => ({
 			currentTheme: prevState.currentTheme === "light" ? "dark" : "light"
@@ -32,32 +21,29 @@ export class AppComponent extends React.Component {
 	};
 
 	render() {
-		const { appTitle, cntr, currentTheme } = this.state;
+		const { appTitle, currentTheme } = this.state;
 		return (
 			<React.Fragment>
 				<ThemeContext.Consumer>
-					{theme =>
-						console.log("theme", theme) || (
-							<div
-								style={{
-									backgroundColor: theme[currentTheme].background,
-									color: theme[currentTheme].text,
-									width: "100vw",
-									height: "100vh",
-									margin: "0",
-									padding: "0"
-								}}
-							>
-								<h1>{appTitle}</h1>
-								<div>Count: {cntr}</div>
-								<button onClick={this.increment}>+</button>
-								<button onClick={this.decrement}>-</button>
-								<button onClick={this.changeTheme}>
-									Change Theme to {currentTheme === "light" ? "dark" : "light"}
-								</button>
-							</div>
-						)
-					}
+					{theme => (
+						<div
+							style={{
+								backgroundColor: theme[currentTheme].background,
+								color: theme[currentTheme].text,
+								width: "100vw",
+								height: "100vh",
+								margin: "0",
+								padding: "0"
+							}}
+						>
+							<h1>{appTitle}</h1>
+							<LoginComponent />
+
+							<button onClick={this.changeTheme}>
+								Change Theme to {currentTheme === "light" ? "dark" : "light"}
+							</button>
+						</div>
+					)}
 				</ThemeContext.Consumer>
 			</React.Fragment>
 		);
